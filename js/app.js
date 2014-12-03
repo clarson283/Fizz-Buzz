@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-var fizzBuzz = function() {
+var fizzBuzz = function(num) {
 
 var num = $("#numArea").val();
 
@@ -13,13 +13,13 @@ if (isNaN(num)) {
 } else {
 	for (var i = 1; i <= num; i++) {
 		if ( i % 3 ===  0 && i % 5 === 0 ) {
-			$("#result").append("<li>Fizz Buzz</li><br>");
+			$("#result").append("<li>FizzBuzz</li>");
 		} else if ( i % 3 === 0 ) {
-			$("#result").append("<li>fizz</li><br>");
+			$("#result").append("<li>fizz</li>");
 		} else if ( i % 5 === 0 ) {
-			$("#result").append("<li>buzz</li><br>");
+			$("#result").append("<li>buzz</li>");
 		} else {
-			$("#result").append("<li>" + i + "</li><br>");
+			$("#result").append("<li>" + i + "</li>");
 		}
 	}
 	$("#numArea").val("");
@@ -30,13 +30,17 @@ if (isNaN(num)) {
 $("#submit").on("click", function() {
 	fizzBuzz();
 	event.preventDefault();
-})
+});
+
+$("#numArea").focusin( function () {
+	$("li").remove();
+});
 
 $(document).keydown( function () {
 	if (event.keyCode === 13) {
 		fizzBuzz();
 		event.preventDefault();
 	}
-})
+});
 
 });
